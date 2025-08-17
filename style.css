@@ -1,0 +1,179 @@
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+#selection-page, #attendance-page {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select, .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#back-to-selection-btn {
+    background-color: #6c757d;
+}
+#back-to-selection-btn:hover {
+    background-color: #5a6268;
+}
+
+/* --- 틀 고정 스타일 --- */
+#attendance-table-container {
+    margin-top: 20px;
+    overflow: auto; /* 가로 및 세로 스크롤 활성화 */
+    max-height: 60vh; /* 테이블 최대 높이 지정 (스크롤 생성용) */
+    position: relative; /* sticky 기준점 */
+}
+
+#attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    min-width: 100%;
+}
+
+/* 테이블 셀 기본 스타일 */
+#attendance-table th,
+#attendance-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    min-width: 80px;
+    word-break: keep-all;
+    /* 배경색 기본값: 스티키 요소 뒤 비침 방지 */
+    background-color: #fff;
+}
+
+/* 헤더 행 (날짜 행 + 첫 빈칸) */
+#attendance-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2; /* 배경색 명시 */
+    z-index: 2; /* 이름 열보다 위에 */
+}
+
+/* 이름 열 (데이터 행의 첫번째 셀) */
+#attendance-table tbody td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #f8f9fa; /* 배경색 명시 */
+    text-align: left;
+    font-weight: bold;
+    min-width: 100px;
+    z-index: 1; /* 일반 셀보다는 위, 헤더 행보다는 아래 */
+}
+
+/* 좌상단 코너 셀 (1행 1열) */
+#attendance-table thead th:first-child {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #9698ac; /* 배경색 명시 (헤더와 동일) */
+    z-index: 3; /* 가장 위에 오도록 하여 다른 sticky 요소 덮음 */
+}
+/* --- 틀 고정 스타일 끝 --- */
+
+
+/* 3단 상태 체크박스 스타일 (변경 없음) */
+.attendance-checkbox {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #ffffff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.attendance-checkbox[data-state="0"] { background-color: #ffffff; }
+.attendance-checkbox[data-state="1"]::before {
+    content: '✓'; color: #007bff; font-weight: bold; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 18px;
+}
+.attendance-checkbox[data-state="2"] { background-color: #28a745; border-color: #28a745; }
+
+/* 나머지 스타일 (변경 없음) */
+.error-message { color: red; font-size: 0.9em; margin-top: 5px; }
+#status-message { margin-top: 15px; font-weight: bold; }
+#status-message.success { color: green; }
+#status-message.error { color: red; }
+#status-message.loading { color: #666; }
+
+/* Loading Spinner Styles */
+.loading-overlay {
+    position: fixed; /* 화면 전체를 덮도록 설정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 다른 요소들 위에 표시되도록 z-index 설정 */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3; /* 밝은 회색 테두리 */
+    border-top: 8px solid #3498db; /* 파란색 테두리 (스피너 색상) */
+    border-radius: 50%; /* 원형으로 만듦 */
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* 회전 애니메이션 적용 */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

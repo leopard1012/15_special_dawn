@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제78차 특새출석 (15교구)</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <h1>특새 출석체크</h1>
+
+    <div id="selection-page">
+        <h2>목장 선택</h2>
+        <div class="form-group">
+            <label for="region-select">지역:</label>
+            <select id="region-select" disabled>
+                <option value="">-- 지역 선택 --</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="group-select">조:</label>
+            <select id="group-select" disabled>
+                <option value="">-- 조 선택 --</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="mokjang-select">목장:</label>
+            <select id="mokjang-select" disabled>
+                <option value="">-- 목장 선택 --</option>
+                </select>
+        </div>
+        <button id="view-attendance-btn" disabled>조회</button>
+        <p id="selection-error" class="error-message"></p>
+    </div>
+
+    <div id="attendance-page" style="display: none;">
+        <h2 id="attendance-header"></h2>
+        <button id="back-to-selection-btn">뒤로가기</button>
+        <div id="attendance-guide">
+            <p><img src="image/off.png" alt="불참" style="vertical-align: middle; margin-right: 5px;"> : 불참</p>
+            <p><img src="image/on(out).png" alt="비대면 참석" style="vertical-align: middle; margin-right: 5px;"> : 비대면 참석</p>
+            <p><img src="image/on(in).png" alt="대면 참석" style="vertical-align: middle; margin-right: 5px;"> : 대면 참석</p>
+        </div>
+        <div id="attendance-table-container">
+            <p>로딩 중...</p>
+            </div>
+        <button id="save-attendance-btn">확인 (저장)</button>
+        <p id="status-message"></p>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+    </body>
+</html>
