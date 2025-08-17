@@ -267,13 +267,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function calculateSpecialdays() { // M/D 형식 반환 (변경 없음)
         const spdays = []; 
-        const date = new Date(2025, 8, 25);
+        const date = new Date(2025, 7, 25);
         for (let days = 0; days < 21; days++) {
             let newDate = new Date(date.getTime());
             newDate.setDate(newDate.getDate() + days);
             // date.setDate(date.getDate + day);
             // spdays.push(newDate.toLocaleDateString('ko-KR'));
-            let month = newDate.getMonth();
+            let month = newDate.getMonth()+1;
             let day = newDate.getDate();
             spdays.push(`${month}/${day}`);
         }
